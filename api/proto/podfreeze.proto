@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package podfreeze;
+
+option go_package = "github.com/podfreeze/core/api/proto/podfreeze";
+
+service Orchestrator {
+  rpc WakeContainer(WakeRequest) returns (WakeResponse);
+}
+
+message WakeRequest {
+  string container_id = 1;
+  string target_ip = 2;
+}
+
+message WakeResponse {
+  bool success = 1;
+  string message = 2;
+  int32 ready_time_ms = 3;
+}
